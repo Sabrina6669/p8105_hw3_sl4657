@@ -37,4 +37,13 @@ instacart %>%
   filter(aisle %in% c("baking ingredients", "dog food care", "packaged vegetables fruits")) %>% 
   knitr::kable()
 
+instacart %>% 
+  group_by(product_name,order_dow) %>% 
+  select(product_name, order_dow, order_hour_of_day) %>% 
+  filter(product_name %in% c("Pink Lady Apples", "Coffee Ice Cream")) %>%
+  summarise(mean_order_hour=mean(order_hour_of_day)) %>% 
+  mutate(order_dow = recode(order_dow, `0` ="Sun", `1` = "Mon", `2`= "Tues", `3`= "Wed", `4` = "Thurs", `5`= "Fri", `6`= "Sat")) %>% 
+  pivot_wider(names_from = order_dow,
+              values_from = mean_order_hour)%>% 
+  knitr::kable()
 ```
