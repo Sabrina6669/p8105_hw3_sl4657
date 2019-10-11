@@ -79,5 +79,13 @@ brfss %>%
   count(locationabbr, name="n_loc") %>% 
   mutate(n_loc= n_loc/5) %>%
   filter(n_loc>7)
+
+brfss %>% 
+  filter(response=="Excellent") %>%
+  group_by(year, locationabbr) %>% 
+  summarise(ava_data=mean(data_value)) %>% 
+  ggplot(aes(x=year, y=ava_data))+
+  geom_line(aes(group= locationabbr, color=locationabbr))+  
+  ggtitle("Average data value for Excellent response among each state over years")
 ```
 
