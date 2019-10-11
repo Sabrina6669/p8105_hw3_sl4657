@@ -122,5 +122,12 @@ accel_data=
            )) %>%   
   select(week, week_kind, day, activity, CHF)
 
+h_data=
+  accel_data %>% 
+  group_by(week, day) %>% 
+  summarise(CHF_mean=mean(CHF, na.rm= TRUE)) 
+h_data%>% 
+  knitr::kable()
+
 ```
 
