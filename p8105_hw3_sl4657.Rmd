@@ -1,0 +1,20 @@
+---
+title: "p8105_hw3"
+author: "Si Li"
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(dplyr)
+library(tidyverse)
+```
+
+Problem 1
+```{r}
+library(p8105.datasets)
+data("instacart")
+instacart %>% 
+  summarise(n_aisle= n_distinct(aisle))
+```
