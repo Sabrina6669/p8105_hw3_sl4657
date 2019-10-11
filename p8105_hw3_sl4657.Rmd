@@ -129,5 +129,9 @@ h_data=
 h_data%>% 
   knitr::kable()
 
+h_data %>% 
+  group_by(week, day) %>% 
+  ggplot(aes(x=week, y= CHF_mean, color= day)) +
+  geom_line()
 ```
 
