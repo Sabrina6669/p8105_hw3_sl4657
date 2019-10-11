@@ -17,4 +17,10 @@ library(p8105.datasets)
 data("instacart")
 instacart %>% 
   summarise(n_aisle= n_distinct(aisle))
+
+ais_n=
+instacart %>% 
+  count(aisle, name = "number")%>% 
+  arrange(desc(number))
+ais_n
 ```
