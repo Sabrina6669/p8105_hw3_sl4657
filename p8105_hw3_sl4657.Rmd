@@ -121,6 +121,7 @@ accel_data=
              TRUE ~ "weekday"
            )) %>%   
   select(week, week_kind, day, activity, CHF)
+accel_data
 
 h_data=
   accel_data %>% 
@@ -135,3 +136,8 @@ h_data %>%
   geom_line()
 ```
 
+The existing variables are `r colnames(accel_data)`, and there are `r nrow(accel_data)` observations.
+
+It is not apparent to make some nice conclusion in this table, trends are hard to find. This is because every data is independent, and haven't show any intuitionistic connection.
+
+While in this graph we can see 
