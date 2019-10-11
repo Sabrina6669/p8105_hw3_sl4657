@@ -31,4 +31,10 @@ instacart %>%
   geom_bar(stat="identity",position="dodge")+
   ggtitle("The number of times ordered in each aisle")+
   coord_flip()
+
+instacart %>%
+  count(aisle, name = "n_times") %>% 
+  filter(aisle %in% c("baking ingredients", "dog food care", "packaged vegetables fruits")) %>% 
+  knitr::kable()
+
 ```
