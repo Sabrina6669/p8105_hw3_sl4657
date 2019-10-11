@@ -23,4 +23,12 @@ instacart %>%
   count(aisle, name = "number")%>% 
   arrange(desc(number))
 ais_n
+
+instacart %>% 
+  count(aisle, name = "number")%>% 
+  filter(number>10000)%>% 
+  ggplot(aes(aisle, number, label=number))+
+  geom_bar(stat="identity",position="dodge")+
+  ggtitle("The number of times ordered in each aisle")+
+  coord_flip()
 ```
