@@ -54,3 +54,30 @@ The most items are ordered from two aisles, fresh vegetables and fresh fruits, a
 We can see from the table, among theses three aisles, packaged vegetables fruits has the biggest number of ordering times, followed by baking ingredients.
 
 In Wednesday, Pink Lady Apples and Coffee Ice Cream have relatively the highest mean hour of the day. 
+
+Problem 2
+```{r}
+library(p8105.datasets)
+data("brfss_smart2010")
+brfss=
+brfss_smart2010 %>% 
+  janitor::clean_names() %>% 
+  filter(topic %in% "Overall Health") %>% 
+  mutate(
+    response= forcats::fct_relevel(response, c("Poor", "Fair", "Good", "Very good", "Excellent"))
+    )
+brfss
+
+brfss%>% 
+  filter(year=="2002") %>% 
+  count(locationabbr, name="n_loc") %>% 
+  mutate(n_loc= n_loc/5) %>%
+  filter(n_loc>7)
+
+brfss %>% 
+  filter(year=="2010") %>% 
+  count(locationabbr, name="n_loc") %>% 
+  mutate(n_loc= n_loc/5) %>%
+  filter(n_loc>7)
+```
+
