@@ -83,7 +83,7 @@ brfss %>%
 brfss %>% 
   filter(response=="Excellent") %>%
   group_by(year, locationabbr) %>% 
-  summarise(ava_data=mean(data_value)) %>% 
+  summarise(ava_data=mean(data_value)) %>%
   ggplot(aes(x=year, y=ava_data))+
   geom_line(aes(group= locationabbr, color=locationabbr))+  
   ggtitle("Average data value for Excellent response among each state over years")
@@ -95,3 +95,8 @@ brfss %>%
   facet_grid(~year)
 ```
 
+In 2002, MA, NJ, PA states were observed at 7 or more locations; while in 2010, there are 11 states were observed at 7 or more locations.
+
+The average data value for each state for response Excellent is quite steady over years.
+
+In 2010, data value for very good is a little bet better than in 2006, besides, poor and fair response stay low in the data value.
