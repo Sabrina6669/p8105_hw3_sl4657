@@ -87,5 +87,11 @@ brfss %>%
   ggplot(aes(x=year, y=ava_data))+
   geom_line(aes(group= locationabbr, color=locationabbr))+  
   ggtitle("Average data value for Excellent response among each state over years")
+
+brfss %>% 
+  filter(locationabbr=="NY" & year%in%c("2006","2010")) %>% 
+  ggplot(aes(x=data_value , y=locationdesc, color=response))+
+  geom_point()+
+  facet_grid(~year)
 ```
 
