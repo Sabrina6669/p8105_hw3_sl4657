@@ -22,7 +22,6 @@ ais_n=
 instacart %>% 
   count(aisle, name = "number")%>% 
   arrange(desc(number))
-ais_n
 
 instacart %>% 
   count(aisle, name = "number")%>% 
@@ -31,12 +30,12 @@ instacart %>%
   geom_bar(stat="identity",position="dodge")+
   ggtitle("The number of times ordered in each aisle")+
   coord_flip()
-
+  
 instacart %>%
   count(aisle, name = "n_times") %>% 
   filter(aisle %in% c("baking ingredients", "dog food care", "packaged vegetables fruits")) %>% 
   knitr::kable()
-
+            
 instacart %>% 
   group_by(product_name,order_dow) %>% 
   select(product_name, order_dow, order_hour_of_day) %>% 
@@ -47,3 +46,11 @@ instacart %>%
               values_from = mean_order_hour)%>% 
   knitr::kable()
 ```
+
+The dataset have `r nrow(instacart)` rows and `r ncol(instacart)` columns. The number of aisles is `r summarise(instacart, n_aisle= n_distinct(aisle))`, the aisle that the most items ordered from is fresh vegetables. Some of the key variables are `r colnames(instacart[14:15])`. 
+
+The most items are ordered from two aisles, fresh vegetables and fresh fruits, and the third one is packages vegetables fruits, meaning people are living more healthy these days. 
+
+We can see from the table, among theses three aisles, packaged vegetables fruits has the biggest number of ordering times, followed by baking ingredients.
+
+In Wednesday, Pink Lady Apples and Coffee Ice Cream have relatively the highest mean hour of the day. 
